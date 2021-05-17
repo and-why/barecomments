@@ -14,9 +14,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>FastFeedback</h1>
 
-        <p className={styles.description}>
-          Get started by editing <code className={styles.code}>pages/index.js</code>
-        </p>
+        <p className={styles.description}>Hello World</p>
 
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
