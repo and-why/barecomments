@@ -23,7 +23,7 @@ const SkeletonRow = ({ width }) => (
 
 const SiteTableSkeleton = () => {
   return (
-    <Table>
+    <Table w="100%">
       <thead>
         <Tr>
           <Th>Name</Th>

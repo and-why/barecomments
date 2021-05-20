@@ -1,15 +1,13 @@
 import React from 'react';
 import {
   Flex,
-  Stack,
   Link,
   Avatar,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   Heading,
-  Box,
-  Button
+  Box
 } from '@chakra-ui/react';
 import { LogoIcon } from './Icons';
 import { useAuth } from '@/lib/auth';
