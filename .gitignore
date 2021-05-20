@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Firebase Admin
+/fastfeedback-c9328-firebase-adminsdk-3tfkg-d65eb915f5.json

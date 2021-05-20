@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import useSWR, { mutate } from 'swr';
 import {
   Modal,
   ModalOverlay,
@@ -16,24 +17,51 @@ import {
 } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react';
 import { createSite } from '@/lib/db';
+import { useAuth } from '@/lib/auth';
+import fetcher from '@/utils/fetcher';
 
-export default function AddSiteModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function AddSiteModal({ children }) {
   const initialRef = React.useRef();
-
-  const { handleSubmit, register, errors } = useForm();
-  const onSubmit = (values) => createSite(values);
   const toast = useToast();
+  const auth = useAuth();
+  const { handleSubmit, register, reset, errors } = useForm();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const onCreateSite = ({ name, url }) => {
+    const newSite = {
+      authorId: auth.user.uid,
+      createdAt: new Date().toISOString(),
+      name,
+      url
+    };
+    createSite(newSite);
+    toast({
+      title: 'Success!',
+      description: "You've successfully added a new site.",
+      status: 'success',
+      duration: 5000,
+      isClosable: true
+    });
+    mutate(
+      '/api/sites',
+      async (data) => {
+        return { sites: [...data.sites, newSite] };
+      },
+      false
+    );
+    onClose();
+    reset();
+  };
 
   return (
     <>
       <Button variant="solid" fontWeight="bold" size="md" onClick={onOpen}>
-        Add your first site
+        {children}
       </Button>
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
+        <ModalContent as="form" onSubmit={handleSubmit(onCreateSite)}>
           <ModalHeader fontWeight="bold">Add Site</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
@@ -42,7 +70,7 @@ export default function AddSiteModal() {
               <Input
                 type="text"
                 placeholder="My site"
-                {...register('site', {
+                {...register('name', {
                   required: 'Required',
                   message: 'please enter a site'
                 })}

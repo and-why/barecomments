@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Flex,
   Stack,
-  Icon,
   Link,
   Avatar,
   Breadcrumb,
@@ -10,13 +9,14 @@ import {
   BreadcrumbLink,
   Heading,
   Box,
-  useRadio
+  Button
 } from '@chakra-ui/react';
 import { LogoIcon } from './Icons';
 import { useAuth } from '@/lib/auth';
+import AddSiteModal from './AddSiteModal';
 
 const DashboardShell = ({ children }) => {
-  const auth = useAuth();
+  const { user, signout } = useAuth();
   return (
     <Box backgroundColor="blackAlpha.50" h="100vh">
       <Flex flexDirection="column" backgroundColor="white" mb={16} w="full">
@@ -29,15 +29,19 @@ const DashboardShell = ({ children }) => {
           margin="0 auto"
           p={4}
         >
-          <Flex spacing={4} isInline justify="center" align="center">
+          <Flex spacing={4} justify="center" align="center">
             <LogoIcon boxSize={8} mr={4} />
             <Link mr={4}>Sites</Link>
             <Link>Feedback</Link>
           </Flex>
-          <Stack spacing={4} isInline justify="center" align="center">
-            <Link>Account</Link>
-            <Avatar size="sm" src={auth.user.photoUrl} />
-          </Stack>
+          <Flex spacing={4} justify="center" align="center">
+            {user && (
+              <Link mr={4} onClick={() => signout()}>
+                Log Out
+              </Link>
+            )}
+            <Avatar size="sm" src={user?.photoUrl} />
+          </Flex>
         </Flex>
         <Flex backgroundColor="blackAlpha.50" justify="center" align="center">
           <Flex
@@ -59,7 +63,10 @@ const DashboardShell = ({ children }) => {
                   <BreadcrumbLink color="gray.700">Sites</BreadcrumbLink>
                 </BreadcrumbItem>
               </Breadcrumb>
-              <Heading mb={4}>Sites</Heading>
+              <Flex justify="space-between" w="100%">
+                <Heading mb={4}>Sites</Heading>
+                <AddSiteModal>+ Add Site</AddSiteModal>
+              </Flex>
               {children}
             </Flex>
           </Flex>
