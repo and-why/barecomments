@@ -55,7 +55,13 @@ export default function AddSiteModal({ children }) {
 
   return (
     <>
-      <Button variant="solid" fontWeight="bold" size="md" onClick={onOpen}>
+      <Button
+        colorScheme="orange"
+        variant="solid"
+        fontWeight="bold"
+        size="md"
+        onClick={onOpen}
+      >
         {children}
       </Button>
 
