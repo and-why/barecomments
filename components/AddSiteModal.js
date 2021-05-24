@@ -18,7 +18,6 @@ import {
 import { useToast } from '@chakra-ui/react';
 import { createSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
-import fetcher from '@/utils/fetcher';
 
 export default function AddSiteModal({ children }) {
   const initialRef = React.useRef();
@@ -43,7 +42,7 @@ export default function AddSiteModal({ children }) {
       isClosable: true
     });
     mutate(
-      '/api/sites',
+      ['/api/sites', auth.user.token],
       async (data) => {
         return { sites: [...data.sites, newSite] };
       },
