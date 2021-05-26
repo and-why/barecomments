@@ -77,7 +77,7 @@ export default function Home() {
               >
                 Sign In with Github
               </Button>
-              <Button
+              {/* <Button
                 leftIcon={<GoogleIcon fill="white" fontSize="20px" />}
                 colorScheme="telegram"
                 m={2}
@@ -86,7 +86,7 @@ export default function Home() {
                 _active={{ transform: 'scale(0.95)' }}
               >
                 Sign In with Google
-              </Button>
+              </Button> */}
             </Flex>
           </Flex>
         )}
