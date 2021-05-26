@@ -13,7 +13,6 @@ import { createFeedback } from '@/lib/db';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
-
   const { feedback } = await getAllFeedback(siteId);
   return {
     props: {
@@ -32,7 +31,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false
+    fallback: true
   };
 }
 

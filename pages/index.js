@@ -31,6 +31,15 @@ export default function Home() {
         `
           }}
         />
+        <script
+          src="https://apis.google.com/js/platform.js"
+          async
+          defer
+        ></script>
+        <meta
+          name="google-signin-client_id"
+          content={process.env.OAUTH_CLIENT_ID}
+        ></meta>
       </Head>
       <Flex maxWidth="400px" direction="column" align="center" justify="center">
         <LogoIcon boxSize={20} mb={4} />
