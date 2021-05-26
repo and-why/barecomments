@@ -1,6 +1,6 @@
 const fetcher = async (url, token) => {
   const res = await fetch(url, {
-    methon: 'GET',
+    method: 'GET',
     headers: new Headers({ 'Content-Type': 'application/json', token }),
     credentials: 'same-origin'
   });

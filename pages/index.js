@@ -4,7 +4,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
 
 import { useAuth } from '@/lib/auth';
 
-import { LogoIcon } from '@/components/Icons';
+import { GithubIcon, GoogleIcon, LogoIcon } from '@/components/Icons';
 import EmptyState from '@/components/EmptyState';
 
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
 
   return (
     <Flex
+      backgroundColor="blackAlpha.50"
       as="main"
       direction="column"
       align="center"
@@ -35,7 +36,12 @@ export default function Home() {
         <LogoIcon boxSize={20} mb={4} />
 
         {auth.user ? (
-          <Button as="a" href="/dashboard" colorScheme="orange">
+          <Button
+            as="a"
+            href="/dashboard"
+            colorScheme="orange"
+            _active={{ transform: 'scale(0.95)' }}
+          >
             View Dashboard
           </Button>
         ) : (
@@ -45,19 +51,34 @@ export default function Home() {
             align="center"
             justify="center"
           >
-            <Text mb={4} w="100%">
+            <Text mb={8} w="100%" p={4}>
               <strong>Bare Comments</strong> makes it easy for you to add
               comments or reviews to your static site. It is still a work in
               progress, but feel free to sign up and give it a try. Sign up,
               sign in or register below.
             </Text>
-            <Button
-              colorScheme="orange"
-              mt={4}
-              onClick={(e) => auth.signinWithGitHub()}
-            >
-              Sign In
-            </Button>
+            <Flex direction="column">
+              <Button
+                leftIcon={<GithubIcon fill="black" fontSize="20px" />}
+                colorScheme="blackAlpha"
+                color="black"
+                m={2}
+                onClick={(e) => auth.signinWithGitHub()}
+                _active={{ transform: 'scale(0.95)' }}
+              >
+                Sign In with Github
+              </Button>
+              <Button
+                leftIcon={<GoogleIcon fill="white" fontSize="20px" />}
+                colorScheme="telegram"
+                m={2}
+                color="white"
+                onClick={(e) => auth.signinWithGoogle()}
+                _active={{ transform: 'scale(0.95)' }}
+              >
+                Sign In with Google
+              </Button>
+            </Flex>
           </Flex>
         )}
       </Flex>

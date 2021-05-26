@@ -1,4 +1,5 @@
 import React from 'react';
+import NextLink from 'next/link';
 import {
   Flex,
   Link,
@@ -28,9 +29,17 @@ const DashboardShell = ({ children }) => {
           p={4}
         >
           <Flex spacing={4} justify="center" align="center">
-            <LogoIcon boxSize={8} mr={4} />
-            <Link mr={4}>Sites</Link>
-            <Link>Feedback</Link>
+            <NextLink href="/" as={`/`} passHref>
+              <Link>
+                <LogoIcon boxSize={8} mr={4} />
+              </Link>
+            </NextLink>
+            <NextLink href="/dashboard" as={`/dashboard`} passHref>
+              <Link mr={4}>Sites</Link>
+            </NextLink>
+            <NextLink href="/feedback" as={`/feedback`} passHref>
+              <Link>Feedback</Link>
+            </NextLink>
           </Flex>
           <Flex spacing={4} justify="center" align="center">
             {user && (
@@ -56,15 +65,6 @@ const DashboardShell = ({ children }) => {
               width="100%"
               maxWidth="800px"
             >
-              <Breadcrumb mb={2}>
-                <BreadcrumbItem isCurrentPage>
-                  <BreadcrumbLink color="gray.700">Sites</BreadcrumbLink>
-                </BreadcrumbItem>
-              </Breadcrumb>
-              <Flex justify="space-between" w="100%">
-                <Heading mb={4}>Sites</Heading>
-                <AddSiteModal>+ Add Site</AddSiteModal>
-              </Flex>
               {children}
             </Flex>
           </Flex>

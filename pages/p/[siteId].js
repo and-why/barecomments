@@ -13,12 +13,13 @@ import { createFeedback } from '@/lib/db';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
+
   const { feedback } = await getAllFeedback(siteId);
   return {
     props: {
       initialFeedback: feedback
     },
-    revalidate: 60
+    revalidate: 1
   };
 }
 
@@ -45,7 +46,7 @@ const SiteFeedbackPage = ({ initialFeedback }) => {
 
     const newFeedback = {
       author: auth.user.name,
-      authodId: auth.user.uid,
+      authorId: auth.user.uid,
       siteId: router.query.siteId,
       text: inputEl.current.value,
       createdAt: new Date().toISOString(),
@@ -64,7 +65,6 @@ const SiteFeedbackPage = ({ initialFeedback }) => {
           <Button type="submit">Add comment</Button>
         </FormControl>
       )}
-      {console.log(allFeedback)}
       {allFeedback.map((feedback) => {
         return <Feedback key={feedback.id} {...feedback} />;
       })}
