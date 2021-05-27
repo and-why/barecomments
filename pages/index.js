@@ -31,7 +31,7 @@ export default function Home() {
         `
           }}
         />
-        <script
+        {/* <script
           src="https://apis.google.com/js/platform.js"
           async
           defer
@@ -39,7 +39,7 @@ export default function Home() {
         <meta
           name="google-signin-client_id"
           content={process.env.OAUTH_CLIENT_ID}
-        ></meta>
+        ></meta> */}
       </Head>
       <Flex maxWidth="400px" direction="column" align="center" justify="center">
         <LogoIcon boxSize={20} mb={4} />
