@@ -43,7 +43,6 @@ export default function Home() {
       </Head>
       <Flex maxWidth="400px" direction="column" align="center" justify="center">
         <LogoIcon boxSize={20} mb={4} />
-
         {auth.user ? (
           <Button
             as="a"
@@ -77,7 +76,7 @@ export default function Home() {
               >
                 Sign In with Github
               </Button>
-              {/* <Button
+              <Button
                 leftIcon={<GoogleIcon fill="white" fontSize="20px" />}
                 colorScheme="telegram"
                 m={2}
@@ -86,7 +85,7 @@ export default function Home() {
                 _active={{ transform: 'scale(0.95)' }}
               >
                 Sign In with Google
-              </Button> */}
+              </Button>
             </Flex>
           </Flex>
         )}
