@@ -1,15 +1,18 @@
 import Head from 'next/head';
+
 import { Button } from '@chakra-ui/button';
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
 
-import { useAuth } from '@/lib/auth';
-
 import { GithubIcon, GoogleIcon, LogoIcon } from '@/components/Icons';
 import EmptyState from '@/components/EmptyState';
+import FeedbackLink from '@/components/FeedbackLink';
+import { useAuth } from '@/lib/auth';
+import { getAllFeedback } from '@/lib/db-admin';
+import Feedback from '@/components/Feedback';
+const SITE_ID = 'o3zgMIVRyjpjABzSIQG0';
 
-export default function Home() {
+export default function Home({ allFeedback }) {
   const auth = useAuth();
-
   return (
     <Flex
       backgroundColor="blackAlpha.50"
@@ -32,7 +35,7 @@ export default function Home() {
           }}
         />
       </Head>
-      <Flex maxWidth="400px" direction="column" align="center" justify="center">
+      <Flex maxWidth="600px" direction="column" align="center" justify="center">
         <LogoIcon boxSize={20} mb={4} />
         {auth.user ? (
           <Button
@@ -49,6 +52,7 @@ export default function Home() {
             direction="column"
             align="center"
             justify="center"
+            mb={8}
           >
             <Text mb={8} w="100%" p={4}>
               <strong>Bare Comments</strong> makes it easy for you to add
@@ -80,7 +84,21 @@ export default function Home() {
             </Flex>
           </Flex>
         )}
+        <FeedbackLink siteId={SITE_ID} />
+        {allFeedback.map((feedback) => {
+          return <Feedback key={feedback.id} {...feedback} />;
+        })}
       </Flex>
     </Flex>
   );
+}
+
+export async function getStaticProps(context) {
+  const { feedback } = await getAllFeedback(SITE_ID);
+  return {
+    props: {
+      allFeedback: feedback || []
+    },
+    revalidate: 1
+  };
 }

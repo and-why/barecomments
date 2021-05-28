@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/layout';
-import Link from 'next/link';
+import { Link } from '@chakra-ui/react';
 
 export default function FeedbackLink({ siteId }) {
   return (
@@ -8,7 +8,7 @@ export default function FeedbackLink({ siteId }) {
         Leave a comment →
       </Link>
       <Link fontSize="xs" color="blackAlpha.500" href="/">
-        Powered by Fast Feedback
+        Powered by Bare Comments
       </Link>
     </Flex>
   );

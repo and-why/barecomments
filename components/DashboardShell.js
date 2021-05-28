@@ -47,7 +47,13 @@ const DashboardShell = ({ children }) => {
                 Log Out
               </Link>
             )}
-            <Avatar size="sm" src={user?.photoUrl} />
+            {user && (
+              <NextLink href="/account" as={`/account`} passHref>
+                <Link mr={4}>
+                  <Avatar size="sm" src={user?.photoUrl} />
+                </Link>
+              </NextLink>
+            )}
           </Flex>
         </Flex>
         <Flex backgroundColor="blackAlpha.50" justify="center" align="center">
