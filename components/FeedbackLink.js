@@ -7,8 +7,8 @@ export default function FeedbackLink({ siteId }) {
       <Link fontWeight="bold" fontSize="sm" href={`/p/${siteId}`}>
         Leave a comment →
       </Link>
-      <Link fontSize="xs" color="blackAlpha.500" href="/">
-        Powered by Fast Feedback
+      <Link fontSize="8px" color="blackAlpha.500" href="/">
+        Powered by Bare Comments
       </Link>
     </Flex>
   );

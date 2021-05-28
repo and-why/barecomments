@@ -1,15 +1,18 @@
 import Head from 'next/head';
+
 import { Button } from '@chakra-ui/button';
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
 
-import { useAuth } from '@/lib/auth';
-
 import { GithubIcon, GoogleIcon, LogoIcon } from '@/components/Icons';
 import EmptyState from '@/components/EmptyState';
+import FeedbackLink from '@/components/FeedbackLink';
+import { useAuth } from '@/lib/auth';
+import { getAllFeedback } from '@/lib/db-admin';
+import Feedback from '@/components/Feedback';
+const SITE_ID = 'o3zgMIVRyjpjABzSIQG0';
 
-export default function Home() {
+export default function Home({ allFeedback }) {
   const auth = useAuth();
-
   return (
     <Flex
       backgroundColor="blackAlpha.50"
@@ -80,7 +83,21 @@ export default function Home() {
             </Flex>
           </Flex>
         )}
+        <FeedbackLink siteId={SITE_ID} />
+        {allFeedback.map((feedback) => {
+          return <Feedback key={feedback.id} {...feedback} />;
+        })}
       </Flex>
     </Flex>
   );
+}
+
+export async function getStaticProps(context) {
+  const { feedback } = await getAllFeedback(SITE_ID);
+  return {
+    props: {
+      allFeedback: feedback || []
+    },
+    revalidate: 1
+  };
 }
