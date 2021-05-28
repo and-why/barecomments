@@ -35,7 +35,7 @@ export default function Home({ allFeedback }) {
           }}
         />
       </Head>
-      <Flex maxWidth="400px" direction="column" align="center" justify="center">
+      <Flex maxWidth="600px" direction="column" align="center" justify="center">
         <LogoIcon boxSize={20} mb={4} />
         {auth.user ? (
           <Button
@@ -52,6 +52,7 @@ export default function Home({ allFeedback }) {
             direction="column"
             align="center"
             justify="center"
+            mb={8}
           >
             <Text mb={8} w="100%" p={4}>
               <strong>Bare Comments</strong> makes it easy for you to add
