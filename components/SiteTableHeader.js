@@ -1,3 +1,4 @@
+import { useAuth } from '@/lib/auth';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,7 +8,8 @@ import {
 } from '@chakra-ui/react';
 import AddSiteModal from './AddSiteModal';
 
-export default function SiteTableHeader() {
+export default function SiteTableHeader({ stripeRole }) {
+  const { user } = useAuth();
   return (
     <>
       <Breadcrumb mb={2}>
@@ -17,7 +19,7 @@ export default function SiteTableHeader() {
       </Breadcrumb>
       <Flex justify="space-between" w="100%">
         <Heading mb={4}>My Sites</Heading>
-        <AddSiteModal>+ Add Site</AddSiteModal>
+        {user?.stripeRole && <AddSiteModal>+ Add Site</AddSiteModal>}
       </Flex>
     </>
   );
