@@ -29,7 +29,7 @@ export default function Home({ allFeedback }) {
           dangerouslySetInnerHTML={{
             __html: `
           if (document.cookie && document.cookie.includes('bare-comments-auth')) {
-            window.location.href = "/dashboard"
+            window.location.href = "/sites"
           }
         `
           }}
@@ -40,7 +40,7 @@ export default function Home({ allFeedback }) {
         {auth.user ? (
           <Button
             as="a"
-            href="/dashboard"
+            href="/sites"
             colorScheme="orange"
             _active={{ transform: 'scale(0.95)' }}
           >

@@ -11,11 +11,12 @@ import UpgradeEmptyState from '@/components/UpgradeEmptyState';
 export default function DashboardPage() {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['/api/sites', user.token] : null, fetcher);
-  const stripeRole = user?.stripeRole;
+  const stripeRole = user?.stripeRole !== 'free';
 
   if (!data) {
     return (
       <DashboardShell>
+        <SiteTableHeader />
         <SiteTableSkeleton />
       </DashboardShell>
     );

@@ -42,7 +42,7 @@ const DashboardShell = ({ children }) => {
                   <LogoIcon boxSize={8} mr={4} />
                 </Link>
               </NextLink>
-              <NextLink href="/dashboard" as={`/dashboard`} passHref>
+              <NextLink href="/sites" as={`/sites`} passHref>
                 <Link mr={4}>Sites</Link>
               </NextLink>
               <NextLink href="/feedback" as={`/feedback`} passHref>

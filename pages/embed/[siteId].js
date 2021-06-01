@@ -10,6 +10,7 @@ import Feedback from '@/components/Feedback';
 import { getAllFeedback, getAllSites } from '@/lib/db-admin';
 import { useAuth } from '@/lib/auth';
 import { createFeedback } from '@/lib/db';
+import DashboardShell from '@/components/DashboardShell';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
@@ -57,11 +58,17 @@ const SiteFeedbackPage = ({ initialFeedback }) => {
     createFeedback(newFeedback);
   };
   return (
-    <Flex direction="column" w="full" maxWidth="700px" margin="0 auto">
+    <>
       {auth.user && (
         <FormControl as="form" my={8} onSubmit={onSubmit}>
           <FormLabel htmlFor="comment">Comment</FormLabel>
-          <Input ref={inputEl} mb={2} type="comment" id="comment" />
+          <Input
+            ref={inputEl}
+            mb={2}
+            type="comment"
+            id="comment"
+            placeholder="Leave a comment"
+          />
           <Button type="submit" isDisabled={router.isFallback}>
             Add comment
           </Button>
@@ -70,7 +77,7 @@ const SiteFeedbackPage = ({ initialFeedback }) => {
       {allFeedback.map((feedback) => {
         return <Feedback key={feedback.id} {...feedback} />;
       })}
-    </Flex>
+    </>
   );
 };
 
