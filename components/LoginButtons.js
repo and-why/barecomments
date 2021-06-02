@@ -2,8 +2,10 @@ import { Button } from '@chakra-ui/button';
 import { Flex, Text } from '@chakra-ui/layout';
 
 import { GithubIcon, GoogleIcon } from '@/components/Icons';
+import { useAuth } from '@/lib/auth';
 
 export default function LoginButtons() {
+  const auth = useAuth();
   return (
     <Flex
       maxWidth="100%"

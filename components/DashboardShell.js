@@ -20,11 +20,15 @@ const DashboardShell = ({ children }) => {
   const { user, signout } = useAuth();
   const router = useRouter();
   const path = router.pathname;
-  const name = path.charAt(1).toUpperCase() + path.slice(2);
+  let name = path.charAt(1).toUpperCase() + path.slice(2);
+  console.log(name);
+  if (name.indexOf('/') > -1) {
+    name = name.split('/')[0];
+  }
   const url = `https://barecomments.vercel.app${path}`;
   return (
     <>
-      <NextSeo title={`${name} - Bare Comments`} canonical={url} />
+      <NextSeo title={`${name} | Bare Comments`} canonical={url} />
       <Box backgroundColor="blackAlpha.50" h="100vh">
         <Flex flexDirection="column" backgroundColor="white" mb={16} w="full">
           <Flex

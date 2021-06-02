@@ -73,7 +73,7 @@ const SettingsTable = ({ stripeRole, children }) => (
   </Box>
 );
 export default function AccountPage() {
-  const { user } = useAuth(status === 'active');
+  const { user, signout } = useAuth();
   const [isBillingLoading, setBillingLoading] = useState(false);
 
   return (

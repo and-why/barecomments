@@ -93,8 +93,15 @@ const FeedbackPage = ({ initialFeedback, site }) => {
             </Button>
           </FormControl>
         )}
-        {allFeedback.map((feedback) => {
-          return <Feedback key={feedback.id} {...feedback} />;
+        {allFeedback.map((feedback, index) => {
+          return (
+            <Feedback
+              key={feedback.id}
+              settings={site?.settings}
+              isLast={index === allFeedback.length - 1}
+              {...feedback}
+            />
+          );
         })}
       </Flex>
     </DashboardShell>
