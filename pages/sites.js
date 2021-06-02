@@ -29,11 +29,11 @@ export default function DashboardPage() {
       </DashboardShell>
     );
   }
+
   return (
     <DashboardShell>
       <SiteTableHeader stripeRole={stripeRole} />
       {stripeRole ? <EmptyState /> : <UpgradeEmptyState />}
-      <UpgradeEmptyState />
     </DashboardShell>
   );
 }

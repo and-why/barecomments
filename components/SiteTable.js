@@ -4,6 +4,7 @@ import { Skeleton } from '@chakra-ui/skeleton';
 import React from 'react';
 import NextLink from 'next/link';
 import { Table, Tr, Th, Td } from './Table';
+import DeleteSitebutton from './DeleteSiteButton';
 
 const SiteTable = ({ sites }) => {
   return (
@@ -28,20 +29,21 @@ const SiteTable = ({ sites }) => {
               </NextLink>
             </Td>
             <Td>
-              <Link href={site.url}>{site.url}</Link>
+              <Link href={site.url} isExternal>
+                {site.url}
+              </Link>
             </Td>
             <Td>
-              <NextLink
-                href="/feedback/[siteId]"
-                as={`/feedback/${site.id}`}
-                passHref
-              >
+              <NextLink href="/site/[siteId]" as={`/site/${site.id}`} passHref>
                 <Link color="teal" fontWeight="bold">
                   View Feedback
                 </Link>
               </NextLink>
             </Td>
             <Td>{format(new Date(site.createdAt), 'PPP')}</Td>
+            <Td>
+              <DeleteSitebutton siteId={site.id} />
+            </Td>
           </Box>
         ))}
       </tbody>

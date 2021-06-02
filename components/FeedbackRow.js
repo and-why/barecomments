@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/layout';
 import { Code, Switch } from '@chakra-ui/react';
 
 import { Td } from './Table';
-import RemoveButton from './RemoveButton';
+import DeleteFeedbackButton from './DeleteFeedbackButton';
 import { updateFeedback } from '@/lib/db';
 
 const FeedbackRow = ({ id, author, text, route, status }) => {
@@ -28,7 +28,7 @@ const FeedbackRow = ({ id, author, text, route, status }) => {
         />
       </Td>
       <Td>
-        <RemoveButton feedbackId={id} />
+        <DeleteFeedbackButton feedbackId={id} />
       </Td>
     </Box>
   );

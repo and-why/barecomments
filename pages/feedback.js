@@ -14,6 +14,7 @@ export default function FeedbackPage() {
   if (!data) {
     return (
       <DashboardShell>
+        <FeedbackTableHeader />
         <SiteTableSkeleton />
       </DashboardShell>
     );
