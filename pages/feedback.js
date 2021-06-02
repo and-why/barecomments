@@ -23,7 +23,6 @@ export default function FeedbackPage() {
   return (
     <DashboardShell>
       <FeedbackTableHeader />
-      {console.log(data)}
       {data.feedback.length ? (
         <FeedbackTable feedback={data.feedback} />
       ) : (

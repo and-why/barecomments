@@ -7,7 +7,7 @@ export default function FeedbackLink({ paths }) {
       align={['flex-start', 'center']}
       justifyContent="space-between"
       mb={8}
-      width="full"
+      width="100%"
       mt={1}
       direction={['column', 'row']}
     >

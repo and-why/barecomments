@@ -22,7 +22,6 @@ import { SettingsIcon } from '@chakra-ui/icons';
 
 const EditSiteModal = ({ settings, siteId, children }) => {
   const toast = useToast();
-  const { user } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { handleSubmit, register } = useForm();
 
@@ -37,7 +36,7 @@ const EditSiteModal = ({ settings, siteId, children }) => {
       duration: 5000,
       isClosable: true
     });
-    mutate(['/api/sites', user.token]);
+    mutate(`/api/site/${siteId}`);
     onClose();
   };
 
@@ -63,8 +62,9 @@ const EditSiteModal = ({ settings, siteId, children }) => {
           <ModalHeader fontWeight="bold">Edit Site</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <FormControl>
+            <FormControl display="flex" direction="row" mb={4}>
               <Switch
+                id="show-timestamp"
                 key={settings?.timestamp}
                 name="timestamp"
                 {...register('timestamp')}
@@ -75,8 +75,9 @@ const EditSiteModal = ({ settings, siteId, children }) => {
                 Show Timestamp
               </FormLabel>
             </FormControl>
-            <FormControl>
+            <FormControl display="flex" direction="row" mb={4}>
               <Switch
+                id="show-icons"
                 key={settings?.icons}
                 name="icons"
                 {...register('icons')}
@@ -87,8 +88,9 @@ const EditSiteModal = ({ settings, siteId, children }) => {
                 Show Icon
               </FormLabel>
             </FormControl>
-            <FormControl>
+            <FormControl display="flex" direction="row" mb={4}>
               <Switch
+                id="show-ratings"
                 key={settings?.ratings}
                 name="ratings"
                 {...register('ratings')}

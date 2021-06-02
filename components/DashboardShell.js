@@ -21,7 +21,6 @@ const DashboardShell = ({ children }) => {
   const router = useRouter();
   const path = router.pathname;
   let name = path.charAt(1).toUpperCase() + path.slice(2);
-  console.log(name);
   if (name.indexOf('/') > -1) {
     name = name.split('/')[0];
   }
@@ -55,9 +54,9 @@ const DashboardShell = ({ children }) => {
             </Flex>
             <Flex spacing={4} justify="center" align="center">
               {user && (
-                <Link mr={4} onClick={() => signout()}>
-                  Log Out
-                </Link>
+                <NextLink href="/account" as={`/account`} passHref>
+                  <Link mr={4}>Account</Link>
+                </NextLink>
               )}
               {user && (
                 <NextLink href="/account" as={`/account`} passHref>
