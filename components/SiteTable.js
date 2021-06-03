@@ -19,7 +19,7 @@ const SiteTable = ({ sites }) => {
         </Tr>
       </thead>
       <tbody>
-        {sites.map((site) => (
+        {sites.map((site, index) => (
           <Box as="tr" key={site.url}>
             <Td>
               <NextLink href="/site/[siteId]" as={`/site/${site.id}`} passHref>
@@ -35,7 +35,11 @@ const SiteTable = ({ sites }) => {
             </Td>
             <Td>
               <NextLink href="/site/[siteId]" as={`/site/${site.id}`} passHref>
-                <Link color="teal" fontWeight="bold" id="view-feedback">
+                <Link
+                  color="teal"
+                  fontWeight="bold"
+                  id={`site-table-link-${index}`}
+                >
                   View Feedback
                 </Link>
               </NextLink>
