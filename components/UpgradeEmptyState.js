@@ -26,6 +26,7 @@ const UpgradeEmptyState = () => {
       <Button
         isLoading={isCheckoutLoading}
         colorScheme="orange"
+        id="add-your-first-site"
         onClick={() => {
           setCheckoutLoading(true);
           createCheckoutSession(user.uid);

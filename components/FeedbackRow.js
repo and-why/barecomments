@@ -28,6 +28,7 @@ const FeedbackRow = ({ id, author, text, route, status }) => {
           colorScheme="green"
           onChange={toggleFeedback}
           isChecked={isChecked}
+          id="feedback-switch"
         />
       </Td>
       <Td>
