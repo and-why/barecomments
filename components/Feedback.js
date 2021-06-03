@@ -7,7 +7,7 @@ import { GithubIcon, GoogleIcon } from './Icons';
 
 const Feedback = ({ author, text, createdAt, provider, isLast, settings }) => {
   return (
-    <Box borderRadius={4} w="full">
+    <Box borderRadius={4} w="full" mb={6}>
       <Flex>
         <Heading size="sm" as="h3" mb={0} color="gray.900" fontWeight="medium">
           {author}
