@@ -72,6 +72,7 @@ const FeedbackPage = () => {
         color="white"
         fontWeight="medium"
         mt={4}
+        id="leave-feedback"
         _hover={{ bg: 'gray.700' }}
         _active={{
           bg: 'gray.800',
@@ -100,7 +101,7 @@ const FeedbackPage = () => {
               ref={inputEl}
               mb={2}
               type="comment"
-              id="comment"
+              id="leave-comment"
               isDisabled={!user}
               placeholder="Leave a comment"
             />

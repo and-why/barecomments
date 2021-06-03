@@ -19,7 +19,7 @@ import { useToast } from '@chakra-ui/react';
 import { createSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
 
-export default function AddSiteModal({ children }) {
+export default function AddSiteModal({ id, children }) {
   const initialRef = React.useRef();
   const toast = useToast();
   const auth = useAuth();
@@ -63,6 +63,7 @@ export default function AddSiteModal({ children }) {
         fontWeight="bold"
         size="md"
         onClick={onOpen}
+        id={id}
       >
         {children}
       </Button>
@@ -77,6 +78,7 @@ export default function AddSiteModal({ children }) {
               <FormLabel>Site Name</FormLabel>
               <Input
                 type="text"
+                id="site-name"
                 placeholder="My site"
                 {...register('name', {
                   required: 'Required',
@@ -89,6 +91,7 @@ export default function AddSiteModal({ children }) {
               <FormLabel>URL</FormLabel>
               <Input
                 type="text"
+                id="site-url"
                 placeholder="https://website.com.au"
                 {...register('url', {
                   required: 'Required'
@@ -101,7 +104,7 @@ export default function AddSiteModal({ children }) {
             <Button mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="teal" type="submit">
+            <Button colorScheme="orange" type="submit" id="submit-button">
               Save
             </Button>
           </ModalFooter>

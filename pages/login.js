@@ -97,7 +97,12 @@ export default function Login() {
                     {...register('password')}
                   />
                   <InputRightElement>
-                    <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    <Button
+                      h="1.75rem"
+                      size="sm"
+                      onClick={handleClick}
+                      id="login-button"
+                    >
                       {show ? 'Hide' : 'Show'}
                     </Button>
                   </InputRightElement>

@@ -35,7 +35,7 @@ const SiteTable = ({ sites }) => {
             </Td>
             <Td>
               <NextLink href="/site/[siteId]" as={`/site/${site.id}`} passHref>
-                <Link color="teal" fontWeight="bold">
+                <Link color="teal" fontWeight="bold" id="view-feedback">
                   View Feedback
                 </Link>
               </NextLink>

@@ -1,8 +1,6 @@
 import DashboardShell from '@/components/DashboardShell';
-import { PaymentIcon } from '@/components/Icons';
 import { useAuth } from '@/lib/auth';
-import { createCheckoutSession, goToBillingPortal } from '@/lib/db';
-import { SpinnerIcon } from '@chakra-ui/icons';
+import { goToBillingPortal } from '@/lib/db';
 import {
   Avatar,
   Badge,
@@ -102,7 +100,12 @@ export default function AccountPage() {
             addresses through the secure portal.
           </Text>
           <Flex justify="flex-end">
-            <Button variant="ghost" ml={4} onClick={() => signout()}>
+            <Button
+              id="account-logout-button"
+              variant="ghost"
+              ml={4}
+              onClick={() => signout()}
+            >
               Log Out
             </Button>
             <Button

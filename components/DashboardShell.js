@@ -46,21 +46,25 @@ const DashboardShell = ({ children }) => {
                 </Link>
               </NextLink>
               <NextLink href="/sites" as={`/sites`} passHref>
-                <Link mr={4}>Sites</Link>
+                <Link mr={4} id="nav-sites-link">
+                  Sites
+                </Link>
               </NextLink>
               <NextLink href="/feedback" as={`/feedback`} passHref>
-                <Link>Feedback</Link>
+                <Link id="nav-feedback-link">Feedback</Link>
               </NextLink>
             </Flex>
             <Flex spacing={4} justify="center" align="center">
               {user && (
                 <NextLink href="/account" as={`/account`} passHref>
-                  <Link mr={4}>Account</Link>
+                  <Link mr={4} id="account-button">
+                    Account
+                  </Link>
                 </NextLink>
               )}
               {user && (
                 <NextLink href="/account" as={`/account`} passHref>
-                  <Link mr={4}>
+                  <Link mr={4} id="account-avatar-button">
                     <Avatar size="sm" src={user?.photoUrl} />
                   </Link>
                 </NextLink>
