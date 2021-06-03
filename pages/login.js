@@ -97,18 +97,18 @@ export default function Login() {
                     {...register('password')}
                   />
                   <InputRightElement>
-                    <Button
-                      h="1.75rem"
-                      size="sm"
-                      onClick={handleClick}
-                      id="login-button"
-                    >
+                    <Button h="1.75rem" size="sm" onClick={handleClick}>
                       {show ? 'Hide' : 'Show'}
                     </Button>
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-              <Button colorScheme="orange" type="submit" isLoading={loading}>
+              <Button
+                colorScheme="orange"
+                type="submit"
+                isLoading={loading}
+                id="login-button"
+              >
                 Login
               </Button>
             </Box>
