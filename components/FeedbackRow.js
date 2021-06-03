@@ -5,6 +5,8 @@ import { Code, Switch } from '@chakra-ui/react';
 import { Td } from './Table';
 import DeleteFeedbackButton from './DeleteFeedbackButton';
 import { updateFeedback } from '@/lib/db';
+import { useAuth } from '@/lib/auth';
+import { mutate } from 'swr';
 
 const FeedbackRow = ({ id, author, text, route, status }) => {
   const auth = useAuth();

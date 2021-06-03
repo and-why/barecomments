@@ -1,11 +1,11 @@
 import DashboardShell from '@/components/DashboardShell';
-import EmptyState from '@/components/EmptyState';
 import SiteTableSkeleton from '@/components/SiteTableSkeleton';
 import { useAuth } from '@/lib/auth';
 import fetcher from '@/utils/fetcher';
 import useSWR from 'swr';
 import FeedbackTable from '@/components/FeedbackTable';
 import FeedbackTableHeader from '@/components/FeedbackTableHeader';
+import FeedbackEmptyState from '@/components/FeedbackEmptyState';
 
 export default function FeedbackPage() {
   const { user } = useAuth();
@@ -23,10 +23,10 @@ export default function FeedbackPage() {
   return (
     <DashboardShell>
       <FeedbackTableHeader />
-      {data.feedback.length ? (
+      {data?.feedback?.length || data == null ? (
         <FeedbackTable feedback={data.feedback} />
       ) : (
-        <EmptyState />
+        <FeedbackEmptyState />
       )}
     </DashboardShell>
   );
