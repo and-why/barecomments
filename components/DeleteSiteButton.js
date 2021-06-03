@@ -68,6 +68,7 @@ const DeleteSitebutton = ({ siteId }) => {
               colorScheme="red"
               onClick={onDelete}
               ml={3}
+              id="confirm-delete-site-button"
             >
               Delete
             </Button>
