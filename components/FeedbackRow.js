@@ -29,6 +29,7 @@ const FeedbackRow = ({ id, author, text, route, status }) => {
           onChange={toggleFeedback}
           isChecked={isChecked}
           id="feedback-switch"
+
         />
       </Td>
       <Td>
