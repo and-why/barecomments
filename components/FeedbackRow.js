@@ -7,10 +7,12 @@ import DeleteFeedbackButton from './DeleteFeedbackButton';
 import { updateFeedback } from '@/lib/db';
 
 const FeedbackRow = ({ id, author, text, route, status }) => {
-  const [checked, setChecked] = useState(status === 'active');
-  const toggleFeedback = () => {
-    setChecked(!checked);
-    updateFeedback(id, { status: !checked ? 'active' : 'pending' });
+  const auth = useAuth();
+  const isChecked = status === 'active';
+
+  const toggleFeedback = async () => {
+    await updateFeedback(id, { status: isChecked ? 'pending' : 'active' });
+    mutate(['/api/feedback', auth.user.token]);
   };
   return (
     <Box as="tr">
@@ -21,10 +23,9 @@ const FeedbackRow = ({ id, author, text, route, status }) => {
       </Td>
       <Td>
         <Switch
-          isChecked={checked}
-          size="md"
-          onChange={toggleFeedback}
           colorScheme="green"
+          onChange={toggleFeedback}
+          isChecked={isChecked}
         />
       </Td>
       <Td>
