@@ -19,7 +19,7 @@ export default function SiteTableHeader({ stripeRole }) {
       </Breadcrumb>
       <Flex justify="space-between" w="100%">
         <Heading mb={4}>My Sites</Heading>
-        {user?.stripeRole && <AddSiteModal>+ Add Site</AddSiteModal>}
+        {user?.stripeRole != 'free' && <AddSiteModal>+ Add Site</AddSiteModal>}
       </Flex>
     </>
   );
