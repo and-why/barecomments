@@ -45,6 +45,7 @@ export default function DeleteFeedbackButton({ feedbackId }) {
         variant="outline"
         colorScheme="red"
         fontSize="20px"
+        id="feedback-delete-button"
         icon={<DeleteIcon />}
       />
 
@@ -72,6 +73,7 @@ export default function DeleteFeedbackButton({ feedbackId }) {
                 colorScheme="red"
                 onClick={onDelete}
                 ml={3}
+                id="confirm-feedback-delete"
               >
                 Delete
               </Button>

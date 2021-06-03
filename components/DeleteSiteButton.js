@@ -38,6 +38,7 @@ const DeleteSitebutton = ({ siteId }) => {
     <>
       <IconButton
         aria-label="Delete site"
+        id="delete-site-button"
         icon="delete"
         variant="ghost"
         colorScheme="red"
