@@ -65,22 +65,27 @@ const FeedbackPage = () => {
 
   const LoginOrLeaveFeedback = () =>
     user ? (
-      <Button
-        type="submit"
-        isDisabled={!siteData || !feedbackData}
-        backgroundColor="gray.900"
-        color="white"
-        fontWeight="medium"
-        mt={4}
-        id="leave-feedback"
-        _hover={{ bg: 'gray.700' }}
-        _active={{
-          bg: 'gray.800',
-          transform: 'scale(0.95)'
-        }}
-      >
-        Leave Feedback
-      </Button>
+      <>
+        {!siteData || !feedbackData ? (
+          <p>Loading</p>
+        ) : (
+          <Button
+            type="submit"
+            backgroundColor="gray.900"
+            color="white"
+            fontWeight="medium"
+            mt={4}
+            id="leave-feedback"
+            _hover={{ bg: 'gray.700' }}
+            _active={{
+              bg: 'gray.800',
+              transform: 'scale(0.95)'
+            }}
+          >
+            Leave Feedback
+          </Button>
+        )}
+      </>
     ) : (
       <LoginButtons />
     );
