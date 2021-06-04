@@ -56,7 +56,7 @@ const DeleteSitebutton = ({ siteId }) => {
             Delete Site
           </AlertDialogHeader>
           <AlertDialogBody>
-            Are you sure? This will also delete all feedback left on the site.
+            Are you sure? This will also delete all feedback left for the site.
             You can't undo this action afterwards.
           </AlertDialogBody>
           <AlertDialogFooter>
