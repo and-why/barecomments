@@ -4,12 +4,32 @@ import { format, parseISO } from 'date-fns';
 import { Box, Divider, Heading, Text } from '@chakra-ui/layout';
 import { Flex, Icon } from '@chakra-ui/react';
 import { GithubIcon, GoogleIcon } from './Icons';
+import { useTheme } from '@/utils/useTheme';
 
 const Feedback = ({ author, text, createdAt, provider, isLast, settings }) => {
+  const colorMode = useTheme();
+  const authorColor = {
+    light: 'gray.900',
+    dark: 'gray.200'
+  };
+  const textColor = {
+    light: 'gray.800',
+    dark: 'gray.300'
+  };
+  const dividerColor = {
+    light: 'gray.200',
+    dark: 'gray.700'
+  };
   return (
     <Box borderRadius={4} w="full" mb={6}>
       <Flex>
-        <Heading size="sm" as="h3" mb={0} color="gray.900" fontWeight="medium">
+        <Heading
+          size="sm"
+          as="h3"
+          mb={0}
+          color={authorColor[colorMode]}
+          fontWeight="medium"
+        >
           {author}
         </Heading>
         {settings?.icons && (
@@ -23,18 +43,13 @@ const Feedback = ({ author, text, createdAt, provider, isLast, settings }) => {
         )}
       </Flex>
       {settings?.timestap && (
-        <Text color="gray.500" mb={4} fontSize="xs">
+        <Text color={textColor[colorMode]} mb={4} fontSize="xs">
           {format(parseISO(createdAt), 'PPpp')}
         </Text>
       )}
-      <Text color="gray.800">{text}</Text>
+      <Text color={textColor[colorMode]}>{text}</Text>
       {isLast && (
-        <Divider
-          borderColor="gray.200"
-          backgroundColor="gray.200"
-          mt={8}
-          mb={8}
-        />
+        <Divider borderColor={dividerColor[colorMode]} mt={8} mb={8} />
       )}
     </Box>
   );
