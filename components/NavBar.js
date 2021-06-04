@@ -55,4 +55,4 @@ const Navbar = ({ children }) => {
   );
 };
 
-export default Navbar;
+export default Navar;
