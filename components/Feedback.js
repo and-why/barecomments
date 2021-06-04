@@ -23,7 +23,6 @@ const Feedback = ({ author, text, createdAt, provider, isLast, settings }) => {
     light: 'gray.200',
     dark: 'gray.700'
   };
-  console.log('text', text);
   return (
     <Box borderRadius={4} w="full" mb={6}>
       <Flex>
