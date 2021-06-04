@@ -7,6 +7,8 @@ import '@/styles/globals.css';
 import theme from '@/styles/theme';
 import { AuthProvider } from '@/lib/auth';
 import SEO from '@/components/next-seo-config';
+import { MDXProvider } from '@mdx-js/react';
+import MDXComponents from '@/components/MDXComponents';
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -38,9 +40,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <AuthProvider>
-        <DefaultSeo {...SEO} />
-        <GlobalStyle />
-        <Component {...pageProps} />
+        <MDXProvider components={MDXComponents}>
+          <DefaultSeo {...SEO} />
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </MDXProvider>
       </AuthProvider>
     </ChakraProvider>
   );

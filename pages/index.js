@@ -4,6 +4,7 @@ import { useAuth } from '@/lib/auth';
 import { getAllFeedback, getSite } from '@/lib/db-admin';
 import { LogoIcon } from '@/components/Icons';
 import FeedbackLink from '@/components/FeedbackLink';
+import Footer from '@/components/Footer';
 import Feedback from '@/components/Feedback';
 import LoginButtons from '@/components/LoginButtons';
 
@@ -19,25 +20,16 @@ export default function Home({ allFeedback, site }) {
       align="center"
       // justify="center"
       w="full"
-      h="100vh"
-      py={16}
+      minHeight="100vh"
     >
-      <Flex
-        maxWidth="600px"
-        w="100%"
-        direction="column"
-        align="center"
-        justify="center"
-      >
+      <Flex w="100%" direction="column" align="center" justify="center">
         <Flex
           direction="column"
-          maxW="600px"
           align={['left', 'center']}
           margin="auto"
           p={8}
-          mb={16}
-          boxShadow="md"
-          borderRadius="md"
+          w="100%"
+          mb={4}
           bg="white"
         >
           <LogoIcon boxSize={20} mb={4} />
@@ -55,18 +47,27 @@ export default function Home({ allFeedback, site }) {
             <LoginButtons />
           )}
         </Flex>
-        <FeedbackLink paths={[SITE_ID]} />
-        {allFeedback.map((feedback, index) => {
-          return (
-            <Feedback
-              key={feedback.id}
-              settings={site?.settings}
-              isLast={index === allFeedback.length - 1}
-              {...feedback}
-            />
-          );
-        })}
+        <Flex
+          w="100%"
+          maxW="600px"
+          direction="column"
+          align="center"
+          justify="center"
+        >
+          <FeedbackLink paths={[SITE_ID]} />
+          {allFeedback.map((feedback, index) => {
+            return (
+              <Feedback
+                key={feedback.id}
+                settings={site?.settings}
+                isLast={index === allFeedback.length - 1}
+                {...feedback}
+              />
+            );
+          })}
+        </Flex>
       </Flex>
+      <Footer />
     </Flex>
   );
 }

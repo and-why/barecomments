@@ -12,14 +12,14 @@ export default function LoginButtons() {
       direction="column"
       align="center"
       justify="center"
-      mb={8}
+      mb={4}
     >
-      <Text mb={8} w="100%" p={4}>
+      <Text mb={4} w="100%" maxW="500px" p={4}>
         <strong>Bare Comments</strong> makes it easy for you to add comments or
         reviews to your static site. It is still a work in progress, but feel
         free to sign up and give it a try. Sign up, sign in or register below.
       </Text>
-      <Flex direction="column">
+      <Flex direction="row">
         <Button
           leftIcon={<GithubIcon fill="black" fontSize="20px" />}
           colorScheme="blackAlpha"
@@ -28,7 +28,7 @@ export default function LoginButtons() {
           onClick={(e) => auth.signinWithGitHub()}
           _active={{ transform: 'scale(0.95)' }}
         >
-          Sign In with Github
+          Continue with Github
         </Button>
         <Button
           leftIcon={<GoogleIcon fill="white" fontSize="20px" />}
@@ -38,7 +38,7 @@ export default function LoginButtons() {
           onClick={(e) => auth.signinWithGoogle()}
           _active={{ transform: 'scale(0.95)' }}
         >
-          Sign In with Google
+          Continue with Google
         </Button>
       </Flex>
     </Flex>

@@ -15,6 +15,7 @@ import { LogoIcon } from './Icons';
 import { useAuth } from '@/lib/auth';
 import AddSiteModal from './AddSiteModal';
 import { NextSeo } from 'next-seo';
+import Footer from './Footer';
 
 const DashboardShell = ({ children }) => {
   const { user, signout } = useAuth();
@@ -28,7 +29,13 @@ const DashboardShell = ({ children }) => {
   return (
     <>
       <NextSeo title={`${name} | Bare Comments`} canonical={url} />
-      <Box backgroundColor="blackAlpha.50" h="100vh">
+      <Box
+        backgroundColor="blackAlpha.50"
+        minHeight="100vh"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+      >
         <Flex flexDirection="column" backgroundColor="white" mb={16} w="full">
           <Flex
             justify="space-between"
@@ -46,18 +53,20 @@ const DashboardShell = ({ children }) => {
                 </Link>
               </NextLink>
               <NextLink href="/sites" as={`/sites`} passHref>
-                <Link mr={4} id="nav-sites-link">
+                <Link mr={4} id="nav-sites-link" fontWeight="medium">
                   Sites
                 </Link>
               </NextLink>
               <NextLink href="/feedback" as={`/feedback`} passHref>
-                <Link id="nav-feedback-link">Feedback</Link>
+                <Link id="nav-feedback-link" fontWeight="medium">
+                  Feedback
+                </Link>
               </NextLink>
             </Flex>
             <Flex spacing={4} justify="center" align="center">
               {user && (
                 <NextLink href="/account" as={`/account`} passHref>
-                  <Link mr={4} id="account-button">
+                  <Link mr={4} id="account-button" fontWeight="medium">
                     Account
                   </Link>
                 </NextLink>
@@ -91,6 +100,7 @@ const DashboardShell = ({ children }) => {
             </Flex>
           </Flex>
         </Flex>
+        <Footer />
       </Box>
     </>
   );
