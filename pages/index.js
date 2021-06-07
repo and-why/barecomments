@@ -21,6 +21,7 @@ export default function Home({ allFeedback, site }) {
       // justify="center"
       w="full"
       minHeight="100vh"
+      justify="space-between"
     >
       <Flex w="100%" direction="column" align="center" justify="center">
         <Flex
