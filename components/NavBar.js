@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Button, Flex, Link, Icon } from '@chakra-ui/react';
+import { Button, Flex, Link } from '@chakra-ui/react';
 
 import { useAuth } from '@/lib/auth';
 import { LogoIcon } from './Icons';

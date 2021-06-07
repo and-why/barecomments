@@ -1,16 +1,10 @@
 import React from 'react';
-import { Heading, Box, Code } from '@chakra-ui/react';
+import { Heading, Box, Text } from '@chakra-ui/react';
 import AddSiteModal from './AddSiteModal';
-import ReactMarkdown from 'react-markdown';
 import { useTheme } from '@/utils/useTheme';
 
 const EmptyState = () => {
   const colorMode = useTheme();
-
-  const textColor = {
-    light: 'gray.800',
-    dark: 'gray.300'
-  };
   return (
     <Box
       width="100%"
@@ -23,29 +17,10 @@ const EmptyState = () => {
       <Heading size="md" as="h2" mb={2}>
         You haven't added any sites yet
       </Heading>
-      <Box color={textColor[colorMode]}>
-        <ReactMarkdown
-          source={text}
-          renderers={{
-            paragraph: MDXComponents.p,
-            blockquote: MDXComponents.blockquote,
-            link: MDXComponents.a,
-            list: MDXComponents.ul,
-            listItem: MDXComponents.li,
-            table: MDXComponents.table,
-            tableHead: MDXComponents.th,
-            tableCell: MDXComponents.td,
-            code: ({ value }) => (
-              <pre>
-                <Code borderRadius={8} p={4} my={4}>
-                  {value}
-                </Code>
-              </pre>
-            ),
-            inlineCode: MDXComponents.inlineCode
-          }}
-        />
-      </Box>
+      <Text mb={4}>
+        To add your first site and manage your comments, you'll need to upgrade
+        your accout.
+      </Text>
       <AddSiteModal id={'add-first-site-button'}>
         Add Your First Site
       </AddSiteModal>
